@@ -12,7 +12,7 @@ import axios from "axios"
 export function loadMovies() {
     return(dispatch) => {
         axios
-            .get("http://eugenere95.github.io/films_list_app/movies.json")
+            .get("https://eugenere95.github.io/films_list_app/movies.json")
             .then(res => {
                 dispatch({type: TOGGLE_SPINNER, payload: false})
                 dispatch({type: LOAD_MOVIES, payload: res.data})
