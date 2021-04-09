@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/films_list_app/static/css/main.159b3a07.chunk.css",
-    "main.js": "/films_list_app/static/js/main.07c35286.chunk.js",
-    "main.js.map": "/films_list_app/static/js/main.07c35286.chunk.js.map",
+    "main.js": "/films_list_app/static/js/main.8e9365db.chunk.js",
+    "main.js.map": "/films_list_app/static/js/main.8e9365db.chunk.js.map",
     "runtime-main.js": "/films_list_app/static/js/runtime-main.62bae6ff.js",
     "runtime-main.js.map": "/films_list_app/static/js/runtime-main.62bae6ff.js.map",
     "static/js/2.5b792e39.chunk.js": "/films_list_app/static/js/2.5b792e39.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.62bae6ff.js",
     "static/js/2.5b792e39.chunk.js",
     "static/css/main.159b3a07.chunk.css",
-    "static/js/main.07c35286.chunk.js"
+    "static/js/main.8e9365db.chunk.js"
   ]
 }
