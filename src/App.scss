@@ -1,0 +1,132 @@
+$white-bg: rgba(255, 255, 255, 0.74);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#main-page {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url("./images/main-bg.jpg") no-repeat center center /cover;
+    z-index: -1;
+    filter: brightness(70%);
+  }
+
+  header {
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 2px 8px #212121;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+
+    .text-field {
+      margin: 5px;
+    }
+
+    #add-movie-bar {
+      position: absolute;
+      z-index: 5;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0 5px 4px #212121;
+      width: 290px;
+      max-height: 0px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all ease-in-out 400ms;
+
+      &.active {
+        max-height: 400px;
+      }
+
+      .MuiFormControl-root {
+        width: 95%;
+      }
+
+      .btn-conrtols {
+        width: 95%;
+        display: flex;
+        justify-content: center;
+        button {
+          margin: 10px;
+        }
+      }
+    }
+  }
+
+  #movies-list {
+    margin: auto;
+    width: 90%;
+    max-width: 1000px;
+    background: $white-bg;
+    padding: 0 15px;
+    box-shadow: 0 0 4px #212121;
+
+    .movie-item {
+      margin: 5px;
+      border-bottom: 1px dashed #212121;
+      padding: 5px;
+      transition: all linear 200ms;
+
+      &:hover{
+        transform: scale(1.02);
+      }
+
+      h3 {
+        margin: 12px 0;
+      }
+
+      .heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .btn {
+          white-space: nowrap;
+        }
+
+        .dropdown-btn {
+          transition: all ease-in-out 200ms;
+
+          &.active {
+            transform: rotateZ(180deg);
+          }
+        }
+      }
+
+      .movie-item_info {
+        max-height: 0;
+        overflow: hidden;
+
+        &.active {
+          max-height: fit-content;
+        }
+      }
+    }
+  }
+}
+
+#linear-progress{
+  color: #fff;
+}
