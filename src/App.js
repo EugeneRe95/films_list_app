@@ -4,7 +4,7 @@ import MainPage from './components/MainPage';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/films_list_app">
       <Route exact path="/" component={MainPage}/>
     </Router>
   );

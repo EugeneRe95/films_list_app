@@ -1,7 +1,7 @@
 {
   "name": "films_list_app",
   "version": "0.1.0",
-  "homepage": "http://eugenere95.github.io/films_list_app",
+  "homepage": "https://eugenere95.github.io/films_list_app",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
