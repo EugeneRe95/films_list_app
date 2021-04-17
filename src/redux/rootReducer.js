@@ -4,16 +4,20 @@ import {
     LOAD_MOVIES,
     SEARCH_BY_ACTORS,
     SEARCH_BY_MOVIE,
+    SHOW_ERROR,
     SORT_MOVIES,
-    TOGGLE_SPINNER
+    TOGGLE_SPINNER,
+    SUCCESS_MESSAGE
 } from "./types";
-
 
 const initialState = {
     movies: [],
     filterByActors: "",
     filterByMovie: "",
-    spinner: true
+    sortByAlphabet: true,
+    spinner: true,
+    error: false,
+    movieAddedMes: false
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -25,12 +29,19 @@ export default function rootReducer(state = initialState, action) {
             };
 
         case DELETE_MOVIE:
-            return {
-                ...state,
-                movies: state
-                    .movies
-                    .filter(item => item.title !== action.payload)
-            };
+            const deleteItem = window.confirm(`Are you sure of deleting "${action.payload}" movie?`)
+            if (deleteItem) {
+                return {
+                    ...state,
+                    movies: state
+                        .movies
+                        .filter(item => item.title !== action.payload)
+                }
+            } else {
+                return {
+                    ...state
+                }
+            }
 
         case SEARCH_BY_ACTORS:
             return {
@@ -47,11 +58,15 @@ export default function rootReducer(state = initialState, action) {
         case SORT_MOVIES:
             return {
                 ...state,
-                movies: state
-                    .movies
-                    .sort((a, b) => a.title < b.title
-                        ? -1
-                        : 1)
+                movies: state.sortByAlphabet
+                    ? state
+                        .movies
+                        .sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
+                    : state
+                        .movies
+                        .sort((a, b) => b.title.toLowerCase().localeCompare(a.title.toLowerCase())),
+                sortByAlphabet: !state.sortByAlphabet
+
             }
 
         case LOAD_MOVIES:
@@ -63,6 +78,12 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 spinner: action.payload
+            }
+
+        case SHOW_ERROR:
+            return {
+                ...state,
+                error: action.payload
             }
 
         default:

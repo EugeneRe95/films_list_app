@@ -4,13 +4,15 @@ import {
     LOAD_MOVIES,
     SEARCH_BY_ACTORS,
     SEARCH_BY_MOVIE,
+    SHOW_ERROR,
     SORT_MOVIES,
-    TOGGLE_SPINNER
+    TOGGLE_SPINNER,
+    SUCCESS_MESSAGE
 } from "./types";
 import axios from "axios"
 
 export function loadMovies() {
-    return(dispatch) => {
+    return (dispatch) => {
         axios
             .get("https://eugenere95.github.io/films_list_app/movies.json")
             .then(res => {
@@ -19,6 +21,7 @@ export function loadMovies() {
             })
             .catch((e) => {
                 dispatch({type: TOGGLE_SPINNER, payload: false})
+                dispatch({type: SHOW_ERROR, payload: true})
                 console.log(e)
             })
     }
@@ -43,6 +46,10 @@ export function filterByActors(payload) {
     return {type: SEARCH_BY_ACTORS, payload}
 }
 
-export function toggleCicularProg(payload){
+export function toggleCicularProg(payload) {
     return {type: TOGGLE_SPINNER, payload}
+}
+
+export function errorMessage(payload) {
+    return {type: SHOW_ERROR, payload}
 }

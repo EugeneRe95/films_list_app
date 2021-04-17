@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {loadMovies} from '../redux/actions'
 import Header from './Header'
 import MovieList from './MovieList'
-import { LinearProgress } from '@material-ui/core'
+import {LinearProgress} from '@material-ui/core'
 
 function MainPage({loadMovies, spinner}) {
     useEffect(() => {

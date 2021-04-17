@@ -3,15 +3,17 @@ import {connect} from 'react-redux'
 import MovieItem from './MovieItem'
 import {v4 as uuidv4} from 'uuid';
 
-function MovieList({movies}) {
+function MovieList({movies, error}) {
     return (
         <section id="movies-list">
-            {movies.map(item => <MovieItem
-                key={uuidv4()}
-                title={item.title}
-                format={item.format}
-                release_date={item.release_date}
-                stars={item.stars}/>)
+            {!error
+                ? movies.map(item => <MovieItem
+                    key={uuidv4()}
+                    title={item.title}
+                    format={item.format}
+                    release_date={item.release_date}
+                    stars={item.stars}/>)
+                : <h2>Oops, something went wrong!</h2>
 }
         </section>
     )
@@ -22,7 +24,8 @@ const mapState = state => {
         movies: state
             .movies
             .filter(item => item.title.toLowerCase().indexOf(state.filterByMovie.toLowerCase()) !== -1)
-            .filter(item => item.stars.toLowerCase().indexOf(state.filterByActors.toLowerCase()) !== -1)
+            .filter(item => item.stars.toLowerCase().indexOf(state.filterByActors.toLowerCase()) !== -1),
+        error: state.error
     }
 }
 

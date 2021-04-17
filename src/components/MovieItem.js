@@ -8,64 +8,66 @@ import {deleteMovie} from "../redux/actions"
 import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
-  margin: {
-    margin: "0px"
-  }
+    margin: {
+        margin: "0px"
+    }
 }));
 
 function MovieItem({title, format, release_date, stars, deleteMovie}) {
-  const classes = useStyles();
+    const classes = useStyles();
 
-  const [info, setInfo] = useState(false)
+    const [info,
+        setInfo] = useState(false)
 
-  return (
-    <div className="movie-item">
-      <div className="heading">
-        <h3>{title}</h3>
-        <div className="btn">
-          <IconButton
-            aria-label="dropdown"
-            className={classes.margin}
-            title="Movie details"
-            onClick={() => {
-            setInfo(!info)
-          }}>
-            <ArrowDropDownCircleIcon
-              color="primary"
-              className={"dropdown-btn " + (info
-              ? "active"
-              : "")}/>
-          </IconButton>
-          <IconButton
-            aria-label="delete"
-            title="Delete movie"
-            className={classes.margin}
-            onClick={() => {
-            deleteMovie(title)
-          }}>
-            <DeleteIcon color="secondary"/>
-          </IconButton>
+    return (
+        <div className="movie-item">
+            <div className="heading">
+                <h3>{title}</h3>
+                <div className="btn">
+                    <IconButton
+                        aria-label="dropdown"
+                        className={classes.margin}
+                        title="Movie details"
+                        onClick={() => {
+                        setInfo(!info)
+                    }}>
+                        <ArrowDropDownCircleIcon
+                            color="primary"
+                            className={"dropdown-btn " + (info
+                            ? "active"
+                            : "")}/>
+                    </IconButton>
+                    <IconButton
+                        aria-label="delete"
+                        title="Delete movie"
+                        className={classes.margin}
+                        onClick={() => {
+                        deleteMovie(title)
+                    }}>
+                        <DeleteIcon color="secondary"/>
+                    </IconButton>
+                </div>
+            </div>
+            <div
+                className={"movie-item_info " + (info
+                ? "active"
+                : "")}>
+                <p>
+                    <strong>Format:</strong>
+                    {format}</p>
+                <p>
+                    <strong>Release date:</strong>
+                    {release_date}</p>
+                <p>
+                    <strong>Stars:</strong>
+                    {stars}</p>
+            </div>
         </div>
-      </div>
-      <div className={"movie-item_info " + (info
-        ? "active"
-        : "")}>
-        <p>
-          <strong>Format:</strong>
-          {format}</p>
-        <p>
-          <strong>Release date:</strong>
-          {release_date}</p>
-        <p>
-          <strong>Stars:</strong>
-          {stars}</p>
-      </div>
-    </div>
-  )
+    )
 }
 
 const mapDispatch = {
-  deleteMovie
+    deleteMovie
 }
 
 export default connect(null, mapDispatch)(MovieItem)

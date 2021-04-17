@@ -57,7 +57,7 @@ body {
       transition: all ease-in-out 400ms;
 
       &.active {
-        max-height: 400px;
+        max-height: 600px;
       }
 
       .MuiFormControl-root {
@@ -70,6 +70,20 @@ body {
         justify-content: center;
         button {
           margin: 10px;
+        }
+      }
+      .notifications{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all ease-in-out 350ms;
+        max-height: 0px;
+        overflow: hidden;
+        h4{
+          margin: 10px 0;
+        }
+        &.active{
+          max-height: 50px;
         }
       }
     }
